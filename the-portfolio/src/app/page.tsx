@@ -1,15 +1,7 @@
-import About from "@/components/about";
 import Header from "@/components/header";
 import Projects from "@/components/projects";
-import Testimonials from "@/components/testimonials";
-import {
-  HoverImageLink,
-  ParallaxText,
-  SectionHeading,
-  SlideIn,
-  TextReveal,
-  Transition,
-} from "@/components/ui";
+
+import { ParallaxText, TextReveal, Transition } from "@/components/ui";
 
 import { UserObject } from "@/utils/interfaces";
 import Experience from "@/components/experience";
@@ -24,14 +16,8 @@ export default async function Home() {
 
   const { user } = (await res.json()) as UserObject;
   if (!user) return null;
-  const {
-    about,
-    testimonials,
-    services,
-    social_handles,
-    timeline,
-    email,
-  } = user;
+  const { about, testimonials, services, social_handles, timeline, email } =
+    user;
 
   const skills = [
     { name: "Python", sequence: 1, enabled: true },
@@ -72,7 +58,6 @@ export default async function Home() {
     },
   ];
 
-
   return (
     <main className="relative">
       <Transition className="fixed md:top-8 top-6 md:left-8 left-6 z-30 hover:text-white/80 text-white/40">
@@ -82,7 +67,7 @@ export default async function Home() {
       </Transition>
       <Header social={social_handles} />
       <Hero about={about} />
-      <About about={about} timeline={timeline} />
+
       <Experience timeline={timeline} />
       {/* ===SKILLS SECTION=== */}
       <section id="skills">
